@@ -24,9 +24,8 @@ public userRegistration(userDetails: any): Observable<any> {
 
 
 //making the api call for user login
-public login(username: any, password: any): Observable<any> {
-  return this.http.post(apiUrl + 'login', {username, password}).pipe(
-    map(this.extractResponseData),
+public login(userDetails: any): Observable<any> {
+  return this.http.post(apiUrl + 'login', userDetails).pipe(
     catchError(this.handleError)
   );
 }
