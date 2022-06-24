@@ -29,6 +29,12 @@ ngOnInit(): void {
 }
 
 // This is the function responsible for sending the form inputs to the backend
+/**
+ * logs user in sending form inputs to api
+ * sets local storage
+ * displays success message or error message
+ * @function LoginUser
+ */
 LoginUser(): void {
     this.fetchApiData.login(this.userData).subscribe((result) => {
      console.log(result);

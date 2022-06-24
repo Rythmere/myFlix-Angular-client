@@ -10,6 +10,14 @@ import { FetchApiDataService } from '../fetch-api-data.service'
 })
 export class GenreViewComponent implements OnInit {
   genre: any
+
+  /**
+   * Injects data from MovieViewComponent, MovieCardComponent, or ProfileViewComponent depending on which component calls this one
+   * Injected data is used to call the api to receive the genre object
+   * @param data 
+   * @param fetchApiData 
+   * @param dialog 
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { Name: string},
@@ -21,6 +29,11 @@ export class GenreViewComponent implements OnInit {
     this.getGenre()
   }
 
+  /**
+   * Retrieves genre data from api
+   * @function getGenre
+   * @returns genre data
+   */
   getGenre(): any {
     const data = this.data;
     console.log(this.data);

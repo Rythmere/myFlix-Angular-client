@@ -12,6 +12,14 @@ import { GenreViewComponent } from '../genre-view/genre-view.component';
 })
 export class MovieViewComponent implements OnInit {
   movie: any;
+
+  /**
+   * Injects data from MovieViewComponent, MovieCardComponent, or ProfileViewComponent depending on which component calls this one
+   * Injected data is used to call the api to receive the movie object
+   * @param data 
+   * @param fetchApiData 
+   * @param dialog 
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { Title: string},
@@ -23,6 +31,11 @@ export class MovieViewComponent implements OnInit {
     this.getMovie();
   }
 
+  /**
+   * Retrieves data for the movie
+   * @function getMovie
+   * @returns movie data
+   */
   getMovie(): any {
     const data = this.data;
     console.log(this.data);
@@ -33,6 +46,10 @@ export class MovieViewComponent implements OnInit {
     });
   }
 
+  /**
+   * opens dialog displaying director details
+   * @param name 
+   */
   openDirectorViewDialog(name: string): void {
     this.dialog.open(DirectorViewComponent, {
       data: {
@@ -42,6 +59,10 @@ export class MovieViewComponent implements OnInit {
     });
   }
 
+  /**
+   * opens dialog displaying genre details
+   * @param name 
+   */
   openGenreViewDialog(name: string): void {
     this.dialog.open(GenreViewComponent, {
       data: {

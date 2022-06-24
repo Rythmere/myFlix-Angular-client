@@ -35,6 +35,11 @@ export class EditProfileComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+   * Gets user's curent data
+   * @function getUser
+   * @returns The current user data
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -42,6 +47,13 @@ export class EditProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * Updates user data
+   * Displays success message
+   * Reloads the page
+   * @function editUser
+   * @returns updated user data
+   */
   editUser(): void {
     this.fetchApiData.updateUser(this.userData).subscribe((resp) => {
   // Logic for a successful user registration goes here! (To be implemented)

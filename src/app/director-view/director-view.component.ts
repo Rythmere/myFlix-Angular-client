@@ -10,6 +10,14 @@ import { FetchApiDataService } from '../fetch-api-data.service'
 })
 export class DirectorViewComponent implements OnInit {
   director: any
+
+  /**
+   * Injects data from MovieViewComponent, MovieCardComponent, or ProfileViewComponent depending on which component calls this one
+   * Injected data is used to call the api to receive director object
+   * @param data 
+   * @param fetchApiData 
+   * @param dialog 
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { Name: string},
@@ -21,6 +29,11 @@ export class DirectorViewComponent implements OnInit {
     this.getDirector()
   }
 
+  /**
+   * Retrieves director data from the api 
+   * @function getDirector
+   * @returns director data
+   */
   getDirector(): any {
     const data = this.data;
     console.log(this.data);

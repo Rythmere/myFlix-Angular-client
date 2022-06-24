@@ -20,6 +20,11 @@ export class MovieCardComponent implements OnInit {
     this.getFavourites()
   }
 
+  /**
+   * Retrieves all movies from the api
+   * @function getMovies
+   * @returns all movies data
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -28,6 +33,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens dialog displaying movie details
+   * @param title 
+   */
   openMovieViewDialog(title: string): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -37,6 +46,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * opens dialog displaying director details
+   * @param name 
+   */
   openDirectorViewDialog(name: string): void {
     this.dialog.open(DirectorViewComponent, {
       data: {
@@ -46,6 +59,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * opens dialog displaying genre details
+   * @param name 
+   */
   openGenreViewDialog(name: string): void {
     this.dialog.open(GenreViewComponent, {
       data: {
@@ -55,6 +72,11 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+   * Retrieves users favourite movies
+   * @function getFavourites
+   * @returns users favourite movies
+   */
   getFavourites(): void {
     this.fetchApiData.getFavourites().subscribe((resp: any) => {
       this.favourites = resp
@@ -62,16 +84,32 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
+  /**
+   * Checks if movie is favourited
+   * @function isFavourite
+   * @param id 
+   * @returns true or false depending if the movie is favourited
+   */
   isFavourite(id: string): boolean {
     return this.favourites.includes(id);
   }
 
+  /**
+   * Adds movie to user's favourites
+   * @function addFavourite
+   * @param id 
+   */
   addFavourite(id: string): void {
     this.fetchApiData.addFavourite(id).subscribe((resp: any) => {
       this.ngOnInit();
     })
   }
 
+  /**
+   * Removes movie from user's favourites
+   * @function removeFavourite
+   * @param id 
+   */
   removeFavourite(id: string): void {
     this.fetchApiData.removeFavourite(id).subscribe((resp: any) => {
       this.ngOnInit();

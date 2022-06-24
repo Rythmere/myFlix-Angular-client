@@ -30,6 +30,10 @@ export class ProfileViewComponent implements OnInit {
     this.getUser()
   }
 
+  /**
+   * Retrieves user data from api
+   * @function getUser
+   */
   getUser(): void {
     let movies: any[] = [];
     const user = localStorage.getItem('user');
@@ -49,12 +53,22 @@ export class ProfileViewComponent implements OnInit {
     }
   }
 
+  /**
+   * opens dialog displaying a form to update account info
+   */
   openEditDialog(): void {
     this.dialog.open(EditProfileComponent, {
       width: 'max-content'
     })
   }
 
+  /**
+   * Deletes user's account
+   * Displays a confirmation pop up
+   * Displays a success message
+   * clears local storage
+   * @function deleteUser
+   */
   deleteUser(): void {
     if (confirm('Delete your account?')) {
       this.router.navigate(['welcome']).then(() => {
@@ -68,6 +82,10 @@ export class ProfileViewComponent implements OnInit {
     }
   }
 
+  /**
+   * Opens dialog displaying movie details
+   * @param title 
+   */
   openMovieViewDialog(title: string): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -77,6 +95,10 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /**
+   * opens dialog displaying director details
+   * @param name 
+   */
   openDirectorViewDialog(name: string): void {
     this.dialog.open(DirectorViewComponent, {
       data: {
@@ -86,6 +108,10 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /**
+   * opens dialog displaying genre details
+   * @param name 
+   */
   openGenreViewDialog(name: string): void {
     this.dialog.open(GenreViewComponent, {
       data: {
@@ -95,6 +121,12 @@ export class ProfileViewComponent implements OnInit {
     })
   }
 
+   /**
+   * Removes movie from user's favourites
+   * reloads the page
+   * @function removeFavourite
+   * @param id 
+   */
   removeFavourite(id: string): void {
     this.fetchApiData.removeFavourite(id).subscribe((resp: any) => {
       this.ngOnInit();
