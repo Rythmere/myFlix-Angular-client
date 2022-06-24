@@ -92,10 +92,10 @@ public getUser(): Observable<any> {
 }
 
 //making the api call to get users favourites
-public getFavourites(movieID: any): Observable<any> {
+public getFavourites(): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
-  return this.http.get(apiUrl + `users/${username}/movies${movieID}`, {headers: new HttpHeaders(
+  return this.http.get(apiUrl + `users/${username}/movies`, {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })}).pipe(
@@ -108,7 +108,7 @@ public getFavourites(movieID: any): Observable<any> {
 public addFavourite(movieID: any): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
-  return this.http.post(apiUrl + `users/${username}/movies${movieID}`, {headers: new HttpHeaders(
+  return this.http.post(apiUrl + `users/${username}/movies/${movieID}`, {} , {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })}).pipe(
@@ -121,7 +121,7 @@ public addFavourite(movieID: any): Observable<any> {
 public removeFavourite(movieID: any): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
-  return this.http.delete(apiUrl + `users/${username}/movies${movieID}`, {headers: new HttpHeaders(
+  return this.http.delete(apiUrl + `users/${username}/movies/${movieID}`, {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })}).pipe(
@@ -134,7 +134,7 @@ public removeFavourite(movieID: any): Observable<any> {
 public updateUser(userDetails: any): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
-  return this.http.put(apiUrl + `users/${username}`, { userDetails, headers: new HttpHeaders(
+  return this.http.put(apiUrl + `users/${username}`, userDetails, {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })}).pipe(
