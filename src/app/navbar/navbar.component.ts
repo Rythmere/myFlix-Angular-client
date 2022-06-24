@@ -8,7 +8,7 @@ import { MatToolbar } from '@angular/material/toolbar';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  user: any = localStorage.getItem('user');
   constructor(
     public router: Router
   ) { }
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   toProfile(): void {
     this.router.navigate(['profile'])
   }
-
+  
   logOut(): void {
     localStorage.clear();
     this.router.navigate(['welcome'])

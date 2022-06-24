@@ -1,6 +1,6 @@
 <mat-toolbar style="background-color: black; color: white;">
-    <button mat-button style="font-size: large;" (click)="toMovies()">myFlix</button>
-    <span></span>
-    <button mat-button  style="font-size: medium;" (click)="toProfile()">Profile</button>
-    <button mat-button  style="font-size: medium;" (click)="logOut()">Logout</button>
+    <button mat-button *ngIf="user!=null" style="font-size: x-large;" (click)="toMovies()">myFlix</button>
+    <button mat-button *ngIf="user==null" style="font-size: x-large;" >myFlix</button>
+    <button mat-button *ngIf="user!=null" style="font-size: medium;" (click)="toProfile()">Profile</button>
+    <button mat-button  *ngIf="user!=null" style="font-size: medium;" (click)="logOut()">Logout</button>
 </mat-toolbar>

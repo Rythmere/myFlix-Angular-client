@@ -1,8 +1,11 @@
+<app-navbar></app-navbar>
 <div class="main-page">
-    <h1>
+  <mat-card>
+    <mat-card-header>
       Welcome to myFlix!
-    </h1>
-    <button
+    </mat-card-header>
+    <mat-card-actions>
+      <button
       mat-raised-button
       (click)="openUserRegistrationDialog()"
       style="margin-right: 10px;"
@@ -18,4 +21,7 @@
     >
       Login
     </button>
-  </div>
+    </mat-card-actions>
+  </mat-card>  
+</div>
+
